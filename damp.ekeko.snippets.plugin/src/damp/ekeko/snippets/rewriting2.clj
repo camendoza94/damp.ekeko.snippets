@@ -30,6 +30,7 @@
   (case (snippet/directive-name directive)
       "create-file" (rewrites/create-file concrete-rhs)
       "replace" (rewrites/replace-node cu concrete-subject concrete-rhs)
+      "replace-transform" (rewrites/replace-transform cu concrete-subject concrete-rhs (first params))
       "replace-value" (rewrites/replace-node cu concrete-subject concrete-rhs)
       "add-element" (rewrites/add-element cu concrete-subject concrete-rhs -1)
       "insert-before" (rewrites/insert-before cu concrete-subject concrete-subject concrete-rhs)

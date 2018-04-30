@@ -1145,6 +1145,18 @@ damp.ekeko.snippets.operatorsrep
      [(make-operand "Meta-variable (e.g., ?v)" opscope-variable validity|variable)]
      false) 
    
+    (Operator. 
+     "add-directive-replace-transform"
+     operators/add-directive-replace-transform
+     :rewrite
+     "Add directive replace and transform."
+     opscope-subject 
+     applicability|node
+     "Rewrites the operand by replacing and transforming it with the code corresponding to the template."
+     [(make-operand "Meta-variable (e.g., ?v)" opscope-variable validity|variable)
+      (make-operand "Clojure expression" opscope-string validity|string)]
+     false) 
+   
    (Operator. 
      "add-directive-replace-value"
      operators/add-directive-replace-value

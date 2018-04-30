@@ -251,6 +251,15 @@
     "Replaces its ASTNode operand by the instantiated template."))
 
 (def
+  directive-replace-transform
+  (directives/make-directive
+    "replace-transform"
+    [(directives/make-directiveoperand "Replacement")
+     (directives/make-directiveoperand "Statement")]
+    nil
+    "Replaces its ASTNode operand by the transformed template."))
+
+(def
   directive-replace-value
   (directives/make-directive
     "replace-value"
@@ -329,6 +338,7 @@
   directives-rewriting
   [directive-replace
    directive-replace-value
+   directive-replace-transform
    directive-add-element
    directive-insert-before
    directive-insert-after

@@ -295,6 +295,20 @@
           rewrite (current-rewrite-for-cu cu)]
       (replace-node rewrite cu-var node newnode))))
 
+(defn 
+  replace-transform
+  "Replace node with newnode (if ASTs are compatible) or clone of newnode (when ASTs are incompatible). "
+  ([rewrite cu-var node newnode exp]
+    (let [transf-value (eval (read-string 
+                        (str "(let [subj \"" (.toString newnode) "\"] " exp ")")))]
+      (let [value (compatible (.getAST rewrite) transf-value)]
+        (swap! rewrite-root-map (fn [x] (assoc x newnode value)))
+        (.replace rewrite (compatible-via-rewrite-map node) value nil))))
+  ([cu-var node newnode exp]
+    (let [cu (determine-rewrite-cu cu-var)
+          rewrite (current-rewrite-for-cu cu)]
+      (replace-transform rewrite cu-var node newnode exp))))
+
 (def 
   ast-for-newlycreatednodes
   (AST/newAST JavaProjectModel/JLS))

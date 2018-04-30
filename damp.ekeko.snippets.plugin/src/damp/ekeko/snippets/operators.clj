@@ -409,6 +409,11 @@ damp.ekeko.snippets.operators
   add-directive-replace
   [snippet subject uservar]
   (add-unary-directive-opname-opvalue|rewriting snippet subject rewriting/directive-replace uservar))
+    
+(defn 
+  add-directive-replace-transform
+  [snippet subject uservar exp]
+  (add-binary-directive-opname-opvalue snippet subject rewriting/directive-replace-transform "Replacement" uservar "Statement" exp))
 
 (defn 
   add-directive-replace-value
